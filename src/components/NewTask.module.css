@@ -1,7 +1,8 @@
 .newTask {
-    width: 46rem;
+    width: 100%;
     height: 3.375rem;
-    margin: -1.688rem auto 4rem;
+    margin-top: -1.688rem;
+    margin-bottom: 4rem;
     display: flex;
     justify-content: center;
     gap: 0.5rem;
@@ -55,7 +56,6 @@
 
 @media screen and (max-width: 768px) {
     .newTask {
-        width: 90%;
         height: 3rem;
         flex-direction: column;
         margin: 0.5rem auto 4rem;
