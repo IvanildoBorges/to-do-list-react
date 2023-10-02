@@ -8,13 +8,19 @@ import {
     useState 
 } from "react"
 
-export function NewTask({ tasksList }: PropsNewTask) {
-    const [task, setTask] = useState(tasksList);
+export function NewTask({ tasksList, setTaskList }: PropsNewTask) {
     const [newTask, setNewTask] = useState("");
 
     function handleCreateNewTask(event: FormEvent) {
         event.preventDefault()
-        setTask([...task, newTask])
+
+        if (newTask.trim()) {
+            const tasks = tasksList.filter(task => task !== '');
+
+            setTaskList(() => [...tasks, newTask])
+        } else {
+            alert("Digite uma tarefa por favor!")
+        }
         setNewTask("")
     }
 

@@ -49,6 +49,7 @@
 }
 
 .newTask > footer button:disabled {
+    opacity: .7;
     cursor: not-allowed;
 }
 
