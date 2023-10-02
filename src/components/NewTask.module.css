@@ -1,0 +1,62 @@
+.newTask {
+    width: 46rem;
+    height: 3.375rem;
+    margin: -1.688rem auto 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.newTask > input, .newTask footer button[type="submit"] {
+    height: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.newTask > input {
+    flex: 1;
+    border: 1px solid var(--gray-700);
+    background: var(--gray-500);
+    color: var(--gray-300);
+    outline: 0;
+    transition: all .2s;
+}
+
+.newTask > input:hover {
+    border: 1px solid var(--purple-dark);
+}
+
+.newTask > input:focus {
+    border: 1px solid var(--purple-dark);
+    color: var(--gray-100);
+}
+
+.newTask > footer button {
+    background: var(--blue-dark);
+    color: var(--gray-100);
+    font-weight: var(--font-weight-bold);
+    border: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.newTask > footer button:not(:disabled):hover {
+    background: var(--blue);
+}
+
+.newTask > footer button:disabled {
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+    .newTask {
+        width: 90%;
+        height: 3rem;
+        flex-direction: column;
+        margin: 0.5rem auto 4rem;
+    }
+}
