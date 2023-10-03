@@ -66,11 +66,19 @@
     flex: 1;
 }
 
-.taskContainer .paragraph {
-    font-size: var(--font-mediun);
+.taskContainer p {
     line-height: 1.4;
-    color: var(--gray-100);
     font-weight: var(--font-weight-normal);
+    font-size: var(--font-mediun);
+}
+
+.taskContainer .paragraph {
+    color: var(--gray-100);
+}
+
+.taskContainer .lineThrought {
+    text-decoration: line-through;
+    color: var(--gray-300);
 }
 
 .taskContainer .icon {
