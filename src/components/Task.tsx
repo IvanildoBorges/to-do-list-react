@@ -1,9 +1,10 @@
 import { Trash } from "phosphor-react"
 import style from "./Task.module.css"
+import { PropsTaskComponent } from "../models/PropsTaskComponent"
 
-export function TaskItem({ ...props }) {
+export function TaskItem({ taskText }: PropsTaskComponent) {
     return (
-        <div key={props.index} className={style.taskContainer}>
+        <div className={style.taskContainer}>
             <div className={style.checkbox}>
                 <input 
                     type="checkbox" 
@@ -12,7 +13,7 @@ export function TaskItem({ ...props }) {
                 />
             </div>
             <div className={style.boxParagraph}>
-                <p className={style.paragraph}>{props.item}</p>
+                <p className={style.paragraph}>{taskText}</p>
             </div>
             <div className={style.icon}>
                 <Trash size={16} />

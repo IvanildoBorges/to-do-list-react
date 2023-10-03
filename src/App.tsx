@@ -36,7 +36,7 @@ function App() {
                       return (
                         <TaskItem 
                           key={index}
-                          item={task}
+                          taskText={task}
                         />
                       )
                     })}
