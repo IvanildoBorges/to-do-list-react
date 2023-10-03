@@ -1,3 +1,4 @@
+import { TaskItem } from "./components/Task"
 import iconListEmpty from "./assets/Clipboard.png"
 import { NewTask } from './components/NewTask'
 import { Header } from './components/Header'
@@ -33,9 +34,10 @@ function App() {
                 : <div className={style.full}>
                     {tasks.map((task, index) => {
                       return (
-                        <div key={index}>
-                          {task}
-                        </div>
+                        <TaskItem 
+                          key={index}
+                          item={task}
+                        />
                       )
                     })}
                   </div>

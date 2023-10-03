@@ -1,0 +1,79 @@
+.taskContainer {
+    display: flex;
+    padding: 1rem;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid var(--gray-400);
+    background: var(--gray-500);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+}
+
+.taskContainer .checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.205rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.taskContainer input[type="checkbox"] {
+    position: absolute;
+    left: auto;
+    top: auto;
+    width: 1.091rem;
+    height: 1.091rem;
+    background: transparent;
+    vertical-align: middle;
+    border: 2px solid var(--blue);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.taskContainer input[type="checkbox"]:hover {
+    border-color: var(--blue-dark);
+}
+
+.taskContainer .checkbox [type="checkbox"]:checked {
+    background: var(--purple-dark);
+    border-color: var(--purple-dark);
+}
+
+.taskContainer .checkbox [type="checkbox"]:checked:hover {
+    background: var(--purple);
+    border-color: var(--purple);
+}
+
+.taskContainer .checkbox input[type="checkbox"]:checked::after {
+    content: '✔';
+    position: absolute;
+    top: -5%;
+    left: 15%;
+    font-size: var(--font-small);
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-100);
+}
+
+.taskContainer .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 4px;
+    transition: all .2s;
+}
+
+.taskContainer .icon:hover, .taskContainer .icon:hover svg {
+    background: var(--gray-400);
+    color: var(--danger);
+}
