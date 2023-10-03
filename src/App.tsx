@@ -6,6 +6,10 @@ import style from './App.module.css'
 
 function App() {
   const [tasks, setTasks] = useState([''])
+  const [CompletedTasks, setCompletedTasks] = useState(0)
+
+  const isEmpty = tasks.includes('', 0)
+  const tasksNumber = isEmpty ? 0 : tasks.length
 
   return (
       <>
@@ -14,10 +18,8 @@ function App() {
           <NewTask tasksList={tasks} setTaskList={setTasks} />
           <div className={style.tasksWrapper}>
             <div className={style.info}>
-              <p>Tarefas criadas: 0</p>
-              <p>Concluídas: 0</p>
-              {/* <InfoTask />
-              <InfoTask /> */}
+              <p>Tarefas criadas: <span>{tasksNumber}</span></p>
+              <p>Concluídas: <span>{`${CompletedTasks} de ${tasksNumber}`}</span></p>
             </div>
             <>
               {tasks.length === 0 || !tasks[0].trim()

@@ -19,6 +19,28 @@
     align-self: stretch;
 }
 
+.tasksWrapper .info > p {
+    font-size: var(--font-mediun);
+    font-weight: var(--font-weight-bold);;
+    line-height: normal;
+}
+
+.tasksWrapper .info > p:not(:last-child) {
+    color: var(--blue);
+}
+
+.tasksWrapper .info > p + p {
+    color: var(--purple);
+}
+
+.tasksWrapper .info span {
+    padding: 0.125rem 0.5rem;
+    border-radius: 16px;
+    background: var(--gray-400);
+    color: var(--gray-200);
+    font-size: var(--font-small);
+}
+
 .tasksWrapper .empty {
     display: flex;
     flex-direction: column;
