@@ -11,7 +11,9 @@ export function TaskItem({ ...props }) {
                     id="checkTask" 
                 />
             </div>
-            {props.item}
+            <div className={style.boxParagraph}>
+                <p className={style.paragraph}>{props.item}</p>
+            </div>
             <div className={style.icon}>
                 <Trash size={16} />
             </div>

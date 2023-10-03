@@ -30,6 +30,7 @@
     height: 1.091rem;
     background: transparent;
     vertical-align: middle;
+    color: var(--gray-100);
     border: 2px solid var(--blue);
     outline: none;
     -webkit-appearance: none;
@@ -59,8 +60,17 @@
     top: -5%;
     left: 15%;
     font-size: var(--font-small);
-    font-weight: var(--font-weight-bold);
+}
+.taskContainer .boxParagraph {
+    display: flex;
+    flex: 1;
+}
+
+.taskContainer .paragraph {
+    font-size: var(--font-mediun);
+    line-height: 1.4;
     color: var(--gray-100);
+    font-weight: var(--font-weight-normal);
 }
 
 .taskContainer .icon {
@@ -71,6 +81,7 @@
     width: 1.5rem;
     border-radius: 4px;
     transition: all .2s;
+    cursor: pointer;
 }
 
 .taskContainer .icon:hover, .taskContainer .icon:hover svg {
