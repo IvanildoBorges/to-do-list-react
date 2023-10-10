@@ -1,31 +1,68 @@
-import { TaskItem } from "./components/Task"
-import iconListEmpty from "./assets/Clipboard.png"
-import { NewTask } from './components/NewTask'
-import { Header } from './components/Header'
+import { Trash } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import style from './App.module.css'
+import iconListEmpty from "./assets/Clipboard.png"
+import { Header } from './components/Header'
+import { NewTask } from './components/NewTask'
+import { TaskItem } from "./components/Task"
 
 function App() {
   const [tasks, setTasks] = useState([''])
   const [completedTasks, setCompletedTasks] = useState([0])
 
-  function handleDeleteTask(id: number, check: boolean) {
-    const list = tasks.filter( (_, index) => index !== id)
-    const completed = completedTasks.filter((_, index) => index !== id)
+  function handleDeleteAllTasks() {
+    confirm('Deseja apagar todas as tarefas?')
+      ? setTasks(() => {
+        localStorage.removeItem('tarefas')
+        return []})
+      : null
+  }
+
+  function handleDeleteTask(id: number, value: string, check: boolean) {
+    const list = tasks.filter( (element) => element !== value)
+    const completed = completedTasks.filter((element) => element !== id)
     
     if (check) {
-      
-      setTasks(list)
+      setTasks(() => {
+        localStorage.removeItem('tarefas')
+        localStorage.setItem('tarefas', JSON.stringify(list))
+        const tarefas = localStorage.getItem('tarefas')
+
+        if (tarefas) {
+          return JSON.parse(tarefas)
+        } else {
+          return list
+        }
+      }) 
       setCompletedTasks(completed)
     } else {
       confirm('Deseja mesmo apagar essa tarefa?') 
-        ? setTasks(list) 
+        ? setTasks(() => {
+          localStorage.removeItem('tarefas')
+          localStorage.setItem('tarefas', JSON.stringify(list))
+          const tarefas = localStorage.getItem('tarefas')
+
+          if (tarefas) {
+            return JSON.parse(tarefas)
+          } else {
+            return list
+          }
+        }) 
         : null
     }
   }
 
   useEffect(() => {
-    setTasks([])
+    const items = localStorage.getItem('tarefas')
+    
+    if (items) {
+      const tarefas = JSON.parse(items);
+
+      setTasks(tarefas)
+    } else {
+      setTasks([])
+    }
+
     setCompletedTasks([])
   }, []);
 
@@ -40,7 +77,7 @@ function App() {
               <p>Concluídas: <span>{`${completedTasks.length} de ${tasks.length}`}</span></p>
             </div>
             <>
-              {tasks.length === 0 || !tasks[0].trim()
+              {tasks.length === 0
                 ? <div className={style.empty}>
                     <img src={iconListEmpty} alt="Icone de lista vazia" />
                     <p className={style.bold}>
@@ -49,11 +86,18 @@ function App() {
                     </p>
                   </div>
                 : <div className={style.full}>
+                    <div className={style.deleteAll}>
+                      <button onClick={handleDeleteAllTasks}>
+                        Apagar tudo
+                        <Trash size={20} />
+                      </button>
+                    </div>
                     {tasks.map((task, index) => {
                       return (
                         <TaskItem 
                           key={index}
                           id={index}
+                          value={task}
                           taskText={task}
                           tasksCompleted={completedTasks}
                           setCompleted={setCompletedTasks}

@@ -1,4 +1,4 @@
-import logo from "../../public/rocket.svg"
+import logo from "../assets/rocket.svg"
 import style from "./Header.module.css"
 
 export function Header() {

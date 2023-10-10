@@ -1,10 +1,11 @@
-import { Trash } from "phosphor-react"
-import style from "./Task.module.css"
-import { PropsTaskComponent } from "../models/PropsTaskComponent"
-import { ChangeEvent, useState } from "react"
+import { Trash } from "phosphor-react";
+import { ChangeEvent, useState } from "react";
+import { PropsTaskComponent } from "../models/PropsTaskComponent";
+import style from "./Task.module.css";
 
 export function TaskItem({ 
     id,
+    value,
     taskText,
     tasksCompleted,
     setCompleted,
@@ -42,7 +43,7 @@ export function TaskItem({
             <div className={style.icon}>
                 <Trash 
                     size={16} 
-                    onClick={() => removeTask(id, isChecked)} 
+                    onClick={() => removeTask(id, value, isChecked)} 
                 />
             </div>
         </div>

@@ -77,10 +77,42 @@
     align-self: stretch;
 }
 
+.tasksWrapper .full .deleteAll {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.5rem 0;
+}
+
+.tasksWrapper .full .deleteAll button {
+    display: flex;
+    align-items: center;
+    padding: 0.15rem 0.5rem;
+    gap: 0.25rem;
+    font-size: var(--font-mediun);
+    font-weight: var(--font-weight-bold); 
+    color: var(--gray-300);
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: 0.5rem;
+    transition: all .2s;
+    outline: none;
+    cursor: pointer;
+}
+
+.tasksWrapper .full .deleteAll button:hover { 
+    color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
 @media screen and (max-width: 768px) {
     .todo {
         display: grid;
         width: 90%;
         margin: 0 auto;
+    }
+
+    .tasksWrapper .full .deleteAll {
+        justify-content: center;
     }
 }

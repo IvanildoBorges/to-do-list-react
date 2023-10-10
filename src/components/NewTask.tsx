@@ -1,12 +1,12 @@
-import { PlusCircle } from "phosphor-react" 
-import { PropsNewTask } from "../models/PropsNewTask"
-import style from "./NewTask.module.css"
-import { 
-    InvalidEvent,
+import { PlusCircle } from "phosphor-react";
+import {
     ChangeEvent,
-    FormEvent, 
-    useState 
-} from "react"
+    FormEvent,
+    InvalidEvent,
+    useState
+} from "react";
+import { PropsNewTask } from "../models/PropsNewTask";
+import style from "./NewTask.module.css";
 
 export function NewTask({ tasksList, setTaskList }: PropsNewTask) {
     const [newTask, setNewTask] = useState("");
@@ -15,9 +15,11 @@ export function NewTask({ tasksList, setTaskList }: PropsNewTask) {
         event.preventDefault()
 
         if (newTask.trim()) {
-            const tasks = tasksList.filter(task => task !== '');
-
-            setTaskList(() => [...tasks, newTask])
+            setTaskList(() => {
+                const lista = [...tasksList, newTask]
+                localStorage.setItem('tarefas', JSON.stringify(lista.filter(task => task !== '')))
+                return lista
+            })
         } else {
             alert("Digite uma tarefa por favor!")
         }
