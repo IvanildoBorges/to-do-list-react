@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react'
 import style from './App.module.css'
 import iconListEmpty from "./assets/Clipboard.png"
 import { Header } from './components/Header'
+import { ModalWhatsapp } from './components/ModalWhatsapp'
 import { NewTask } from './components/NewTask'
 import { TaskItem } from "./components/Task"
 
 function App() {
   const [tasks, setTasks] = useState([''])
   const [completedTasks, setCompletedTasks] = useState([0])
+  const [activeModal, setActiveModal] = useState(false)
 
   function handleDeleteAllTasks() {
     confirm('Deseja apagar todas as tarefas?')
@@ -53,7 +55,11 @@ function App() {
   }
 
   function handleSendTasksWhatsApp() {
-    alert("Lista de tarefas enviadas!")
+    if (activeModal) {
+      setActiveModal(false)
+    } else {
+      setActiveModal(true)
+    }
   }
 
   useEffect(() => {
@@ -120,6 +126,14 @@ function App() {
               }
             </>
           </div>
+          {activeModal 
+            ? <ModalWhatsapp 
+                lista={tasks} 
+                isActived={activeModal} 
+                setActived={setActiveModal} 
+              /> 
+            : <></>
+          }
         </main>
       </>
   )
