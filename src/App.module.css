@@ -77,30 +77,36 @@
     align-self: stretch;
 }
 
-.tasksWrapper .full .deleteAll {
+.tasksWrapper .full .buttons {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin: 0.5rem 0;
 }
 
-.tasksWrapper .full .deleteAll button {
+.tasksWrapper .full .buttons button {
     display: flex;
     align-items: center;
     padding: 0.15rem 0.5rem;
-    gap: 0.25rem;
     font-size: var(--font-mediun);
     font-weight: var(--font-weight-bold); 
-    color: var(--gray-300);
     border: 1px solid transparent;
+    color: var(--gray-300);
     background: transparent;
     border-radius: 0.5rem;
     transition: all .2s;
     outline: none;
     cursor: pointer;
+    gap: 0.25rem;
 }
 
-.tasksWrapper .full .deleteAll button:hover { 
+.tasksWrapper .full .buttons .whatsapp:hover {
+    display: flex;
+    color: #1c8531;
+    border: 1px solid #1c8531;
+}
+
+.tasksWrapper .full .buttons button:not(.whatsapp):hover { 
     color: var(--danger);
     border: 1px solid var(--danger);
 }
@@ -112,7 +118,10 @@
         margin: 0 auto;
     }
 
-    .tasksWrapper .full .deleteAll {
+    .tasksWrapper .full .buttons {
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
     }
 }

@@ -1,4 +1,4 @@
-import { Trash } from 'phosphor-react'
+import { Trash, WhatsappLogo } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import style from './App.module.css'
 import iconListEmpty from "./assets/Clipboard.png"
@@ -52,6 +52,10 @@ function App() {
     }
   }
 
+  function handleSendTasksWhatsApp() {
+    alert("Lista de tarefas enviadas!")
+  }
+
   useEffect(() => {
     const items = localStorage.getItem('tarefas')
     
@@ -86,7 +90,14 @@ function App() {
                     </p>
                   </div>
                 : <div className={style.full}>
-                    <div className={style.deleteAll}>
+                    <div className={style.buttons}>
+                      <button 
+                        className={style.whatsapp} 
+                        onClick={handleSendTasksWhatsApp}
+                      >
+                        Enviar para o WhatsApp
+                        <WhatsappLogo size={20} />
+                      </button>
                       <button onClick={handleDeleteAllTasks}>
                         Apagar tudo
                         <Trash size={20} />
