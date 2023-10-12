@@ -66,10 +66,19 @@ export function ModalWhatsapp({ lista, isActived, setActived }: PropsModalWhatsa
         }
     }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         let concatenarStrings: string = ''
 
-        lista.forEach(item => concatenarStrings += '\n'+item) //encodeURIComponent(item)
+        lista.forEach(item => {
+            if (concatenarStrings === '') {
+                concatenarStrings = item
+            } else {
+                concatenarStrings += '\n'+item
+            }
+        }) //encodeURIComponent(item)
+
+        console.log(concatenarStrings.length, concatenarStrings );
 
         setMessage(concatenarStrings)
     });
